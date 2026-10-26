@@ -12,12 +12,12 @@ function parseTweets(runkeeper_tweets) {
 	//This line modifies the DOM, searching for the tag with the numberTweets ID and updating the text.
 	//It works correctly, your task is to update the text of the other tags in the HTML file!
 	document.getElementById('numberTweets').innerText = tweet_array.length;	
-	// Helper: update every element with this id or class
+	// update every element with this id or class
 	function setText(name, value) {
 		document.querySelectorAll('#' + name + ', .' + name).forEach(el => el.innerText = value);
 	}
 
-	// Helper: format a percentage with exactly 2 decimals
+	// format a percentage with exactly 2 decimals
 	function pct(count, total) {
 		return math.format(count / total * 100, {notation: 'fixed', precision: 2}) + '%';
 	}
@@ -45,7 +45,7 @@ function parseTweets(runkeeper_tweets) {
 	setText('miscellaneous', misc);
 	setText('miscellaneousPct', pct(misc, total));
 
-	// User-written tweets (out of completed events)
+	// User written tweets out of completed events
 	const written = tweet_array.filter(t => t.source === 'completed_event' && t.written).length;
 	setText('written', written);
 	setText('writtenPct', pct(written, completed));

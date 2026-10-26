@@ -35,7 +35,7 @@ function parseTweets(runkeeper_tweets) {
 		counts[type] = counts[type] + 1;
 	}
 	
-	const types = Object.keys(counts);   // ["run", "walk", "bike", ...]
+	const types = Object.keys(counts);   
 	types.sort(function (a, b) {
 		return counts[b] - counts[a];     // biggest count first
 	});
@@ -136,21 +136,21 @@ function parseTweets(runkeeper_tweets) {
 	//The button switches between Chart 2 and Chart 3
 	button.addEventListener('click', function () {
 		if (meanChart.style.display === 'none') {
-			// Currently showing all points -> switch to means
+			// all points -> means
 			allPointsChart.style.display = 'none';
 			meanChart.style.display = 'block';
 			button.innerText = 'Show all activities';
 		} else {
-			// Currently showing means -> switch to all points
+			//  means -> all points
 			allPointsChart.style.display = 'block';
 			meanChart.style.display = 'none';
 			button.innerText = 'Show means';
 		}
 	});
 
-		//  Which activity is longest/shortest, and weekday vs weekend
+		// Which activity is longest/shortest, and weekday vs weekend
 
-	// Helper: average distance of a list of activities
+	// average distance of a list of activities
 	function averageDistance(list) {
 		let total = 0;
 		for (let i = 0; i < list.length; i++) {
@@ -158,7 +158,7 @@ function parseTweets(runkeeper_tweets) {
 		}
 		return total / list.length;
 	}
-	// Helper: get only the activities of one type
+	// get only the activities of one type
 	function onlyType(type) {
 		const result = [];
 		for (let i = 0; i < topActivities.length; i++) {
@@ -168,7 +168,7 @@ function parseTweets(runkeeper_tweets) {
 		}
 		return result;
 	}
-	// Sort the top 3 types by their average distance (longest first)
+	// Sort the top 3 types by their average distance 
 	const topTypes = [top1, top2, top3];
 	topTypes.sort(function (a, b) {
 		return averageDistance(onlyType(b)) - averageDistance(onlyType(a));

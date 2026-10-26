@@ -29,7 +29,7 @@ function addEventHandlerForSearch() {
 		const searchText = searchBox.value;
 		document.getElementById('searchText').innerText = searchText;
 
-		// Empty search box -> clear the table
+		// Empty search box then clear the table
 		if (searchText === '') {
 			table.innerHTML = '';
 			document.getElementById('searchCount').innerText = 0;
