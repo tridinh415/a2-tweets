@@ -24,7 +24,7 @@ function parseTweets(runkeeper_tweets) {
 		}
 	}
 
-	// ===== Count each activity type and find the top 3 =====
+	//Count each activity type and find the top 3
 
 	const counts = {};
 	for (let i = 0; i < activities.length; i++) {
@@ -37,7 +37,7 @@ function parseTweets(runkeeper_tweets) {
 	
 	const types = Object.keys(counts);   
 	types.sort(function (a, b) {
-		return counts[b] - counts[a];     // biggest count first
+		return counts[b] - counts[a];     //biggest count first
 	});
 	const top1 = types[0];
 	const top2 = types[1];
@@ -148,7 +148,7 @@ function parseTweets(runkeeper_tweets) {
 		}
 	});
 
-		// Which activity is longest/shortest, and weekday vs weekend
+	// Which activity is longest/shortest, and weekday vs weekend
 
 	// average distance of a list of activities
 	function averageDistance(list) {

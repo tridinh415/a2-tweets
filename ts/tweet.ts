@@ -7,7 +7,6 @@ class Tweet {
 		this.time = new Date(tweet_time);//, "ddd MMM D HH:mm:ss Z YYYY"
 	}
 
-	//returns either 'live_event', 'achievement', 'completed_event', or 'miscellaneous'
     get source():string {
         const t = this.text;
     if (t.startsWith("Just completed") || t.startsWith("Just posted")) {
@@ -22,7 +21,6 @@ class Tweet {
     return "miscellaneous";
 }
 
-    //returns a boolean, whether the text includes any content written by the person tweeting.
     get written():boolean {
         //TODO: identify whether the tweet is written
         return this.text.includes(" - ") && !this.text.includes("TomTom MySports Watch");
@@ -34,7 +32,7 @@ class Tweet {
         }
         // Keep only the part after " - "
         const afterDash = this.text.substring(this.text.indexOf(" - ") + 3);
-        // The link and #Runkeeper come at the end, so cut everything from the link onward
+        // The link and #Runkeeper come at the end, so cut everything from the link onwards
         const userText = afterDash.split("https://")[0];
         return userText.trim();
     }
@@ -46,12 +44,11 @@ class Tweet {
         //TODO: parse the activity type from the text of the tweet
         const words = this.text.split(" ");
         const unit = words[4];
-        // Time-based activities (like yoga) have no km/mi, so skip them
         if (unit !== "km" && unit !== "mi") {
             return "unknown";
         }
 
-        // (handles multi-word activities like "mtn bike")
+        // (handles multi word activities like "mtn bike")
         const activity: string[] = [];
         for (let i = 5; i < words.length; i++) {
             if (words[i] === "-" || words[i] === "with" || words[i].startsWith("http")) {
